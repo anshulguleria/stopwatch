@@ -1,0 +1,9 @@
+/* helpers */
+.inlineB {
+    display: inline-block;
+}
+
+.timer {
+    border: solid thin black;
+    min-width: 300px;
+}

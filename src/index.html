@@ -3,30 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Stopwatch</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <h1>Demonstrate stopwatch application.</h1>
 
     <div class="stopwatch-container">
     </div>
-
+    <div class="stopwatch-container2">
+    </div>
     <!-- templates -->
     <script type="text/x-handlebars" id="stopwatch-tmpl">
-        <div class="time">
-            <div class="hrs inlineB"></div>
-            <div class="time-seperator inlineB">:</div>
-            <div class="mins inlineB"></div>
-            <div class="time-seperator inlineB">:</div>
-            <div class="secs inlineB"></div>
-            <div class="time-seperator inlineB">:</div>
-            <div class="milisecs inlineB"></div>
-        </div>
         <div class="actions-container">
             <button class="action-btn jstart">Start</button>
             <button class="action-btn jstop">Stop</button>
             <button class="action-btn jsplit">Split</button>
             <button class="action-btn jreset">Reset</button>
         </div>
+        <div class="clock">
+            <div class="inlineB">
+                <div class="head">Clock</div>
+                <div class="timer jtimer">
+                    <!-- timer -->
+                </div>
+            </div>
+            <div class="inlineB">
+                <div class="head">History</div>
+                <div class="history jhistory">
+                    <!-- timers list -->
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-handlebars" id="timer-tmpl">
+        <div class="hrs inlineB">{{hours}}hrs</div>
+        <div class="time-seperator inlineB">:</div>
+        <div class="mins inlineB">{{mins}}mins</div>
+        <div class="time-seperator inlineB">:</div>
+        <div class="secs inlineB">{{secs}}</div>
+        <div class="time-seperator inlineB">.</div>
+        <div class="milisecs inlineB">{{milli}}secs</div>
+    </script>
+
+    <script type="text/x-handlebars" id="history-tmpl">
+        {{#each splits}}
+            <div class="timer">
+                <div class="hrs inlineB">{{hours}}hrs</div>
+                <div class="time-seperator inlineB">:</div>
+                <div class="mins inlineB">{{mins}}</div>
+                <div class="time-seperator inlineB">:</div>
+                <div class="secs inlineB">{{secs}}</div>
+                <div class="time-seperator inlineB">.</div>
+                <div class="milisecs inlineB">{{milli}}secs</div>
+            </div>
+        {{/each}}
     </script>
 
     <!-- script inclusions -->
