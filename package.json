@@ -1,0 +1,14 @@
+{
+  "name": "stopwatch",
+  "version": "0.0.1",
+  "description": "A stopwatch app in javascript.",
+  "main": "stopwatch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stopwatch"
+  ],
+  "author": "Anshul Guleria <anshulguleria@ymail.com>",
+  "license": "ISC"
+}
