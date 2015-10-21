@@ -7,6 +7,33 @@
 <body>
     <h1>Demonstrate stopwatch application.</h1>
 
-    <script src="src/js/stopwatch.js"></script>
+    <div class="stopwatch-container">
+    </div>
+
+    <!-- templates -->
+    <script type="text/x-handlebars" id="stopwatch-tmpl">
+        <div class="time">
+            <div class="hrs inlineB"></div>
+            <div class="time-seperator inlineB">:</div>
+            <div class="mins inlineB"></div>
+            <div class="time-seperator inlineB">:</div>
+            <div class="secs inlineB"></div>
+            <div class="time-seperator inlineB">:</div>
+            <div class="milisecs inlineB"></div>
+        </div>
+        <div class="actions-container">
+            <button class="action-btn jstart">Start</button>
+            <button class="action-btn jstop">Stop</button>
+            <button class="action-btn jsplit">Split</button>
+            <button class="action-btn jreset">Reset</button>
+        </div>
+    </script>
+
+    <!-- script inclusions -->
+    <script src="js/libs/jquery-2.1.4.js"></script>
+    <script src="js/libs/handlebars-v4.0.2.js"></script>
+    <script src="js/helpers/dateparser.js"></script>
+    <script src="js/stopwatch.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
