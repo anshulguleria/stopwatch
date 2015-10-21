@@ -18,6 +18,7 @@
         // data object for controller
         model: null,
         isStarted: false,
+        isDead: false,
         tickInterval: 1000/60,  // 60fps
 
         init: function () {
@@ -68,11 +69,12 @@
             this.model.splits = [];
             // mark started as false
             this.isStarted = false;
+            this.isDead = false;
             this.triggerModelChange();
             console.log('reset clock');
         },
         start: function () {
-            if(this.isStarted) { return; }
+            if(this.isStarted || this.isDead) { return; }
             // initialize model
             this.isStarted = true;
             this.model.startTime = 0;
@@ -90,6 +92,7 @@
             this._stopTick();
             // mark started as false
             this.isStarted = false;
+            this.isDead = true;
             console.log('stop clock');
         },
         split: function () {
@@ -212,6 +215,10 @@
             this.controller.reset();
             this.renderTimer(this.controller.model);
             this.renderHistory(this.controller.model);
+
+            // hide export link
+            var link = this._$container.querySelector('.jexport-lnk');
+            link.classList.add('hide');
         },
         start: function () {
             this.controller.start();
@@ -221,6 +228,16 @@
         stop: function () {
             this.controller.stop();
             this.renderTimer(this.controller.model);
+            this.renderHistory(this.controller.model);
+
+            if(!this.controller.isDead) { return; }
+            // also provide export link
+            var obj = this.controller.model;
+            var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+            var link = this._$container.querySelector('.jexport-lnk');
+            link.href = "data:" + data;
+            link.download = "stopwatch.json";
+            link.classList.remove('hide');
         },
         split: function () {
             this.controller.split();

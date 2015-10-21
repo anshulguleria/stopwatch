@@ -2,6 +2,9 @@
 .inlineB {
     display: inline-block;
 }
+.hide {
+    display: none;
+}
 
 .timer {
     border: solid thin black;
