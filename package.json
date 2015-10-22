@@ -10,5 +10,13 @@
     "stopwatch"
   ],
   "author": "Anshul Guleria <anshulguleria@ymail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anshulguleria/stopwatch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anshulguleria/stopwatch/issues"
+  },
+  "homepage": "https://github.com/anshulguleria/stopwatch#readme"
 }
