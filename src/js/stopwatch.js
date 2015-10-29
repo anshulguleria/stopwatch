@@ -43,15 +43,25 @@
         },
 
         _tickId: null,
+        _errorMargin: 80, // difference which can be allowed in milliseconds
         _startTick: function () {
             if(this._tickId) {
                 clearTimeout(this._tickId);
             }
+            var oldTime = new Date();
             this._tickId = setTimeout(function tick () {
-                // todo: rather than using just += use date objects
-                // to have a better sync when browser timeouts
-                // on tab change
-                this.model.currentTime += this.tickInterval;
+                var newTime = new Date();
+                var jump = newTime.getTime() - oldTime.getTime();
+                oldTime = newTime;
+
+                if(jump > (this.tickInterval + this._errorMargin)) {
+                    // this can happen only if browser suspends
+                    // timeout. One reason could be tabChange
+                    this.model.currentTime += jump;
+                    console.log('correcting time by: ', jump);
+                } else {
+                    this.model.currentTime += this.tickInterval;
+                }
                 this.triggerModelChange();
                 this._tickId = setTimeout(tick.bind(this), this.tickInterval);
             }.bind(this), this.tickInterval);
