@@ -24,3 +24,4 @@ A basic stopwatch application in mvc.
 * add instructions for es6 pattern also.
 * add handling for lost time on browser tab change. It occurs when timeout interval is less than 1000ms.
 * performance improvements on better handling for data change. See backbone examples for better idea.
+* Provide ui for multiple clock addition.
